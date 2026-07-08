@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration Form</title>
+<style>
+        body {
+            font-family: serif;
+            display: flex;
+            justify-content: center;
+            padding-top: 50px;
+        }
+        table {
+            border-collapse: separate;
+            border-spacing: 2px;
+            border: 2px outset gray;
+            background-color: white;
+            width: 80%;
+            max-width: 700px;
+        }
+        th, td {
+            border: 1px inset gray;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        th {
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        td:first-child {
+            width: 30%;
+        }
+        input[type="text"], input[type="email"], input[type="tel"], input[type="date"] {
+            width: 200px;
+        }
+        textarea {
+            width: 250px;
+            height: 60px;
+            resize: none;
+        }
+    </style>
+</head>
+<body>
+
+    <form action="#" method="POST">
+        <table>
+            <tr>
+                <th colspan="2">Registration Form</th>
+            </tr>
+            <tr>
+                <td>Student Name</td>
+                <td><input type="text" name="student_name"></td>
+            </tr>
+            <tr>
+                <td>Father's Name</td>
+                <td><input type="text" name="father_name"></td>
+            </tr>
+            <tr>
+                <td>Mother's Name</td>
+                <td><input type="text" name="mother_name"></td>
+            </tr>
+            <tr>
+                <td>Date of Birth</td>
+                <td><input type="date" name="dob"></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>
+                    Male <input type="radio" name="gender" value="male" checked> 
+                    Female <input type="radio" name="gender" value="female">
+                </td>
+            </tr>
+            <tr>
+                <td>Email ID</td>
+                <td><input type="email" name="email"></td>
+            </tr>
+            <tr>
+                <td>Mobile No.</td>
+                <td><input type="tel" name="mobile"></td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td><textarea name="address"></textarea></td>
+            </tr>
+            <tr>
+                <td>State</td>
+                <td><input type="text" name="state"></td>
+            </tr>
+            <tr>
+                <td>City</td>
+                <td><input type="text" name="city"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Submit"></td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>
