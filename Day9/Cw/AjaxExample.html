@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Registration Form</title>
+<link href="RegStyle.css" rel="stylesheet">
+<script type="text/javascript">
+	function passwordStrength() {
+		var password = document.getElementById("pwd").value;
+
+		var req = new XMLHttpRequest();
+		req.open("GET",
+				"http://localhost:8080/MyWebApplication/PasswordStrengthServlet?pwd="
+						+ password,true);
+
+		req.onreadystatechange = function() {
+
+			if (req.readyState == 4 && req.status == 200) {
+				document.getElementById("result").innerHTML = req.responseText;
+			}
+		};
+		
+		
+		req.send();
+
+	}
+	
+	function emailCheck() {
+		
+		var email = document.getElementById("email").value;
+		var req = new XMLHttpRequest();
+		req.open("GET",
+				"http://localhost:8080/MyWebApplication/EmailCheckServlet?email="+email,true);
+
+		req.onreadystatechange = function() {
+
+			if (req.readyState == 4 && req.status == 200) {
+				document.getElementById("result1").innerHTML = req.responseText;
+			}
+		};
+		
+		
+		req.send();
+
+	}
+</script>
+</head>
+<body>
+	<table>
+		<tr>
+			<th colspan="2">Registration Form</th>
+		</tr>
+
+		<tr>
+			<td>Student Name</td>
+			<td><input type="text" name="StudentName"></td>
+		</tr>
+
+		<tr>
+			<td>Father's Name</td>
+			<td><input type="text"></td>
+		</tr>
+
+		<tr>
+			<td>Mother's Name</td>
+			<td><input type="text"></td>
+		</tr>
+
+		<tr>
+			<td>Date of Birth</td>
+			<td><input type="date"></td>
+		</tr>
+
+		<tr>
+			<td>Gender</td>
+			<td><input type="radio" name="gender">Male <input
+				type="radio" name="gender">Female</td>
+		</tr>
+
+		<tr>
+			<td>Email ID</td>
+			<td><input type="email" id="email" value="Enter your Email" onfocus="this.value=''" onblur="emailCheck() "/><span id="result1"></span></td>
+		</tr>
+
+		<tr>
+			<td>Password</td>
+			<td><input type="password" id="pwd" onkeyup="passwordStrength()" placeholder="Enter Your Password"/><span
+				id="result" ></span></td>
+		</tr>
+
+		<tr>
+			<td>Mobile No.</td>
+			<td><input type="tel"></td>
+		</tr>
+
+		<tr>
+			<td>Address</td>
+			<td><textArea rows="4" cols="25"></textArea></td>
+		</tr>
+
+		<tr>
+			<td>State</td>
+			<td><input type="text"></td>
+		</tr>
+
+		<tr>
+			<td>City</td>
+			<td><input type="text"></td>
+		</tr>
+
+		<tr>
+			<td></td>
+			<td><input type="submit" value="submit"></td>
+		</tr>
+
+	</table>
+</body>
+</html>
