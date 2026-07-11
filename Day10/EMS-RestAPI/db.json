@@ -1,0 +1,33 @@
+{
+  "employees": [
+    {
+      "id": "1",
+      "firstName": "srakshin",
+      "lastName": "chityala",
+      "email": "bsrakshin@gmail.com",
+      "mobileNumber": "8341606749"
+    },
+    {
+      "id": "3",
+      "firstName": "charith",
+      "lastName": "reddy",
+      "email": "charithreddy@gmail.com",
+      "mobileNumber": "9988776655"
+    },
+    {
+      "id": "4",
+      "firstName": "Anita",
+      "lastName": "Rao",
+      "email": "anita.rao_updated@abctech.com",
+      "mobileNumber": "9090900000"
+    },
+    {
+      "id": "a31P6gZV4dA",
+      "firstName": "Divya",
+      "lastName": "Kumar",
+      "email": "divya.kumar@abctech.com",
+      "mobileNumber": "9876123450"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
