@@ -3,6 +3,7 @@ package com.coforge.ems.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.hibernate.cfg.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,11 +17,13 @@ import com.coforge.ems.repo.EmployeeRepo;
 public class EmployeeServiceImpl implements EmployeeService {
 
 	private EmployeeRepo repo;
+	private Environment environment;
 
 	@Autowired
-	public EmployeeServiceImpl(EmployeeRepo repo) {
+	public EmployeeServiceImpl(EmployeeRepo repo, Environment environment) {
 		super();
 		this.repo = repo;
+		this.environment = environment; 
 	}
 
 	@Override
@@ -31,7 +34,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 			repo.save(employee);
 			return true;
 		} else {
-			throw new InvalidEmployeeObjectException();
+			throw new InvalidEmployeeObjectException(environment.getProperty("ems.invalid.employee-details"));
 		}
 	}
 
