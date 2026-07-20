@@ -29,7 +29,7 @@ public class EmployeeController {
 	private EmployeeService service;
 	private Environment environment;
 
-	@Autowired // constructor Injection
+	@Autowired // service and environment injected automatically (constructor Injection)
 	public EmployeeController(EmployeeService service, Environment environment) {
 		super();
 		this.service = service;
@@ -48,23 +48,22 @@ public class EmployeeController {
 	}
 
 	@PutMapping("/employees/{eid}")
-	public ResponseEntity<String> updateEmployee(@PathVariable("eid") int eid, @RequestBody Employee employee) {
+	public ResponseEntity<String> updateEmployee(@Valid @NotNull @PathVariable("eid") int eid, @Valid @RequestBody Employee employee) {
 		ResponseEntity<String> responseEntity = null;
 
-		
-			boolean status = service.updateEmployee(eid, employee);
-			if (status)
-				responseEntity = new ResponseEntity<>(environment.getProperty("ems.update.success"),HttpStatus.CREATED);
-			return responseEntity;
+		boolean status = service.updateEmployee(eid, employee);
+		if (status)
+			responseEntity = new ResponseEntity<>(environment.getProperty("ems.update.success"), HttpStatus.CREATED);
+		return responseEntity;
+	}
 
 	@DeleteMapping("/employees/{eid}")
-	public ResponseEntity<String> deleteByEid(@PathVariable("eid") int eid) {
+	public ResponseEntity<String> deleteByEid(@Valid @PathVariable("eid") int eid) {
 		ResponseEntity<String> responseEntity = null;
 
 		boolean status = service.deleteByEid(eid);
 		if (status)
 			responseEntity = new ResponseEntity<>(environment.getProperty("ems.delete.success"), HttpStatus.OK);
-
 		return responseEntity;
 	}
 
@@ -82,7 +81,6 @@ public class EmployeeController {
 	@GetMapping("/employees")
 	public ResponseEntity<?> findAllEmployees() {
 		ResponseEntity<?> responseEntity = null;
-
 		List<Employee> employees = service.findAllEmployees();
 		responseEntity = new ResponseEntity<>(employees, HttpStatus.OK);
 
@@ -102,7 +100,6 @@ public class EmployeeController {
 	@DeleteMapping("/employees/ename/{ename}")
 	public ResponseEntity<?> deleteByEname(@PathVariable("ename") String ename) {
 		ResponseEntity<?> responseEntity = null;
-
 		boolean status = service.deleteByEname(ename);
 		responseEntity = new ResponseEntity<>(environment.getProperty("ems.delete.success"), HttpStatus.OK);
 
@@ -125,7 +122,6 @@ public class EmployeeController {
 
 		String info = service.getInfo();
 		responseEntity = new ResponseEntity<>(info, HttpStatus.OK);
-
 		return responseEntity;
 	}
 
